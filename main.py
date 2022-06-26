@@ -13,7 +13,7 @@ security = HTTPBasic()
 @app.post('/quote')
 async def quote(request: Request, credentials: HTTPBasicCredentials = Depends(security)):
     Authentication.authenticate(credentials= credentials)
-    
+
     response = CotationService.quote(request)
 
     return response

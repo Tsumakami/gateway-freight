@@ -2,7 +2,7 @@ from typing import List
 from models.request import Request
 from models.response import Response
 from models.services import Services
-
+from services.cotation import CotationInterface
 
 class CotationService:
     
@@ -11,8 +11,18 @@ class CotationService:
         response: List[Response] = list()
 
         for service in Services:
-            resp = Response()
-            resp.courier = service.name
-            response.append(resp)
+
+            if service.value != None:
+                cotationService: CotationInterface = service.value
+                resp = cotationService.quote(request= request)
+                
+                if resp == None:
+                    print(f'{type(cotationService).__name__} returned None on result. ')
+                    continue
+
+                if resp.message != None:
+                    print(f'Cotation fail in {type(cotationService).__name__}.')
+                else:
+                    response.append(resp)
 
         return response

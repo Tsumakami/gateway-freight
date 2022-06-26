@@ -6,4 +6,3 @@ class Response(BaseModel):
     message: str = None
     cost: float = None
     delivery_time: int = None
-
