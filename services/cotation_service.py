@@ -2,6 +2,7 @@ from typing import List
 from models.request import Request
 from models.response import Response
 from models.services import Services
+from services.contingency_service import ContingencyService
 from services.cotation import CotationInterface
 
 class CotationService:
@@ -24,5 +25,10 @@ class CotationService:
                     print(f'Cotation fail in {type(cotationService).__name__}.')
                 else:
                     response.append(resp)
+
+        if len(response) == 0:
+            resp = ContingencyService.quote(request)
+            if resp != None:
+                response.append(resp)
 
         return response
