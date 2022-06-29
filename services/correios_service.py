@@ -7,7 +7,7 @@ from utils.map_response import MapResponse
 from .cotation import CotationInterface
 
 class CorreiosService(CotationInterface):
-    endpoint:str = 'http://18.116.162.10:8000/quote'
+    endpoint:str = 'http://172.31.38.240:8000/quote'
     user: str = 'admin'
     password: str = 'admin123'
 
