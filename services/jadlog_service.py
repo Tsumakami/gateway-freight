@@ -7,7 +7,7 @@ from utils.map_response import MapResponse
 from .cotation import CotationInterface
 
 class JadlogService(CotationInterface):
-    endpoint:str = 'http://localhost:8083/quote'
+    endpoint:str = 'http://18.216.221.115:8083/quote'
     user: str = 'admin'
     password: str = 'admin123'
 
